@@ -1,0 +1,70 @@
+[gd_scene format=4 uid="uid://bsptxnxwweago"]
+
+[ext_resource type="Texture2D" uid="uid://bypvyp4sb38c8" path="res://sprites/building_home_inside_tiles.png" id="1_aq1cs"]
+[ext_resource type="Texture2D" uid="uid://5yn3rbe7cbw5" path="res://sprites/Area1_sub1_stair1.png" id="1_mfk8r"]
+[ext_resource type="PackedScene" uid="uid://uk7wqyagyxuj" path="res://Area/girl.tscn" id="2_0qbhy"]
+[ext_resource type="Texture2D" uid="uid://ca50cwkl3q1es" path="res://sprites/Area1_sub1_stair1_1.png" id="4_lwwlc"]
+[ext_resource type="Script" uid="uid://c1oxqyysw6g0o" path="res://Area/stair_trigger_1.gd" id="5_cvf67"]
+[ext_resource type="Script" uid="uid://duwbtu0m7kain" path="res://Area/door_exit_1.gd" id="6_rwh4x"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwh4x"]
+texture = ExtResource("1_aq1cs")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b30ca"]
+sources/0 = SubResource("TileSetAtlasSource_rwh4x")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4kkl"]
+size = Vector2(160, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpifi"]
+size = Vector2(5, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82tj2"]
+size = Vector2(20, 10)
+
+[node name="Area1Sub1" type="Node2D" unique_id=780332627]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1247726605]
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray("AAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAcAAAAAAAAAAAATAAgAAAAAAAAAAAATAAkAAAAAAAAAAAALAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAARAAcAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_b30ca")
+
+[node name="Home_rec_room_2" type="Sprite2D" parent="." unique_id=29720632]
+position = Vector2(240, 136)
+texture = ExtResource("1_mfk8r")
+
+[node name="girl" parent="." unique_id=42267708 instance=ExtResource("2_0qbhy")]
+position = Vector2(184, 109)
+
+[node name="Home_rec_room_1" type="Sprite2D" parent="." unique_id=14450729]
+position = Vector2(240, 136)
+texture = ExtResource("4_lwwlc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1085254187]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=287374625]
+build_mode = 1
+polygon = PackedVector2Array(160, 177, 160, 88, 320, 88, 320, 177, 314, 177, 314, 120, 245, 120, 245, 140, 214, 140, 214, 120, 166, 120, 166, 177)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=852043754]
+position = Vector2(240, 180)
+shape = SubResource("RectangleShape2D_t4kkl")
+
+[node name="StairTrigger1" type="Area2D" parent="." unique_id=620973254]
+script = ExtResource("5_cvf67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StairTrigger1" unique_id=2144192067]
+position = Vector2(211.5, 128)
+shape = SubResource("RectangleShape2D_tpifi")
+
+[node name="DoorExit1" type="Area2D" parent="." unique_id=1852591334]
+script = ExtResource("6_rwh4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorExit1" unique_id=1755082034]
+position = Vector2(189, 171)
+shape = SubResource("RectangleShape2D_82tj2")
+
+[connection signal="body_entered" from="StairTrigger1" to="StairTrigger1" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorExit1" to="DoorExit1" method="_on_body_entered"]

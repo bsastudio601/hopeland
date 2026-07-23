@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://bu6x5qh8rru4u"]
 
+[ext_resource type="Texture2D" uid="uid://mrlaof3vf3vk" path="res://sprites/grasslandtestt1.png" id="1_xpwvf"]
+[ext_resource type="Texture2D" uid="uid://b1kwqoktbqdd6" path="res://sprites/grasslandtestt2.png" id="2_3e3y1"]
 [ext_resource type="PackedScene" uid="uid://uk7wqyagyxuj" path="res://Area/girl.tscn" id="3_3e3y1"]
 [ext_resource type="Texture2D" uid="uid://cjk3cl15foup7" path="res://sprites/building_between_filling_1.png" id="3_4i4sc"]
 [ext_resource type="Texture2D" uid="uid://c1y2vjyi0je5t" path="res://sprites/sidewalk and road tilemap.png" id="3_abb1u"]
@@ -11,10 +13,27 @@
 [ext_resource type="Script" uid="uid://cbhti2kwthmmn" path="res://Area/door_1_trigger.gd" id="7_sqcja"]
 [ext_resource type="Texture2D" uid="uid://blygdqbmkk5aj" path="res://sprites/building_3.png" id="8_sqcja"]
 [ext_resource type="Texture2D" uid="uid://30tvahgyx6cp" path="res://sprites/building_4.png" id="9_3meeu"]
-[ext_resource type="PackedScene" uid="uid://37kfysiq62i" path="res://deco/flowerpot_long.tscn" id="14_3meeu"]
-[ext_resource type="PackedScene" uid="uid://88owcn7oi35h" path="res://deco/plantpot_long.tscn" id="14_wqiwm"]
-[ext_resource type="PackedScene" uid="uid://dei7ghs7wkty0" path="res://deco/plantpot_1.tscn" id="15_aaw6n"]
-[ext_resource type="Script" uid="uid://dfl2vvn36uqoa" path="res://Area/area_2_trigger.gd" id="17_fdsbl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_abb1u"]
+texture = ExtResource("1_xpwvf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7q3l"]
+texture = ExtResource("2_3e3y1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b30ca"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_abb1u")
+sources/1 = SubResource("TileSetAtlasSource_b7q3l")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1foj"]
 texture = ExtResource("3_abb1u")
@@ -37,33 +56,19 @@ texture = ExtResource("3_abb1u")
 sources/0 = SubResource("TileSetAtlasSource_g1foj")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b30ca"]
-size = Vector2(16, 2)
+size = Vector2(16, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4kkl"]
 size = Vector2(479.5, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_82tj2"]
-size = Vector2(5, 123)
-
 [node name="Area1" type="Node2D" unique_id=116826432]
 
+[node name="ground test" type="TileMapLayer" parent="." unique_id=1196514094]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAACAAAAAQAAAAAAAAABAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAQAAAAAAAAACAAEAAAAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAANAAUAAAAAAAAAAAANAAQAAAAAAAAAAAANAAMAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAANAAEAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAQAAAAAAAAAAAALAAAAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_b30ca")
+
 [node name="fillings" type="Node2D" parent="." unique_id=2127624639]
-
-[node name="building_6" type="Sprite2D" parent="fillings" unique_id=718698635]
-position = Vector2(339, 66)
-texture = ExtResource("9_3meeu")
-
-[node name="building_4" type="Sprite2D" parent="fillings" unique_id=1334993828]
-position = Vector2(104, 65)
-texture = ExtResource("9_3meeu")
-
-[node name="building_3" type="Sprite2D" parent="fillings" unique_id=700445806]
-position = Vector2(413, 84)
-texture = ExtResource("8_sqcja")
-
-[node name="building_5" type="Sprite2D" parent="fillings" unique_id=1872244323]
-position = Vector2(193, 50)
-texture = ExtResource("7_4i4sc")
 
 [node name="filling_4" type="Sprite2D" parent="fillings" unique_id=1827247617]
 position = Vector2(251, 117)
@@ -99,7 +104,7 @@ texture = ExtResource("6_abb1u")
 script = ExtResource("7_sqcja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="buildings/building_home/Door1Trigger" unique_id=408606296]
-position = Vector2(-18, 83)
+position = Vector2(-18, 76)
 shape = SubResource("RectangleShape2D_b30ca")
 
 [node name="building_shop_1" type="Sprite2D" parent="buildings" unique_id=789599356]
@@ -107,7 +112,7 @@ position = Vector2(383, 111)
 texture = ExtResource("5_ogstj")
 
 [node name="building_1" type="Sprite2D" parent="buildings" unique_id=1579090909]
-position = Vector2(209, 95)
+position = Vector2(207, 95)
 texture = ExtResource("6_75qhq")
 
 [node name="building_2" type="Sprite2D" parent="buildings" unique_id=1339146394]
@@ -126,38 +131,10 @@ texture = ExtResource("9_3meeu")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="buildings/StaticBody2D" unique_id=574370342]
-position = Vector2(241, 148)
+position = Vector2(240.25, 137)
 shape = SubResource("RectangleShape2D_t4kkl")
 
-[node name="deco" type="Node2D" parent="." unique_id=593260193]
-
-[node name="plantpot_long" parent="deco" unique_id=121237668 instance=ExtResource("14_wqiwm")]
-position = Vector2(303, 158)
-
-[node name="flowerpot_long2" parent="deco" unique_id=673412855 instance=ExtResource("14_3meeu")]
-position = Vector2(49, 158)
-
-[node name="plantpot_long2" parent="deco" unique_id=1133709789 instance=ExtResource("14_wqiwm")]
-position = Vector2(197, 158)
-
-[node name="flowerpot_long" parent="deco" unique_id=783183571 instance=ExtResource("14_3meeu")]
-position = Vector2(369, 158)
-
-[node name="plantpot_1" parent="deco" unique_id=1300183633 instance=ExtResource("15_aaw6n")]
-position = Vector2(252, 151)
-
-[node name="plantpot_2" parent="deco" unique_id=2002005299 instance=ExtResource("15_aaw6n")]
-position = Vector2(475, 151)
-
-[node name="Area2Trigger" type="Area2D" parent="." unique_id=389506208]
-script = ExtResource("17_fdsbl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2Trigger" unique_id=112227173]
-position = Vector2(-1.5, 208.5)
-shape = SubResource("RectangleShape2D_82tj2")
-
 [node name="girl" parent="." unique_id=42267708 instance=ExtResource("3_3e3y1")]
-position = Vector2(260, 168)
+position = Vector2(13, 215)
 
 [connection signal="body_entered" from="buildings/building_home/Door1Trigger" to="buildings/building_home/Door1Trigger" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2Trigger" to="Area2Trigger" method="_on_body_entered"]

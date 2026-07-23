@@ -1,0 +1,49 @@
+[gd_scene format=4 uid="uid://ce5khlxroa0tc"]
+
+[ext_resource type="Texture2D" uid="uid://bypvyp4sb38c8" path="res://sprites/building_home_inside_tiles.png" id="1_hx650"]
+[ext_resource type="PackedScene" uid="uid://uk7wqyagyxuj" path="res://Area/girl.tscn" id="1_wfnya"]
+[ext_resource type="Texture2D" uid="uid://b7ttilv777hlq" path="res://sprites/area1_sub2_stair1.png" id="2_8u8ja"]
+[ext_resource type="PackedScene" uid="uid://dei7ghs7wkty0" path="res://deco/plantpot_1.tscn" id="4_ljhpr"]
+[ext_resource type="Texture2D" uid="uid://cugw6whfbkkjo" path="res://sprites/area1_sub2_stair2.png" id="4_nrgvk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8un07"]
+texture = ExtResource("1_hx650")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8u8ja"]
+sources/0 = SubResource("TileSetAtlasSource_8un07")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftma3"]
+size = Vector2(111, 6)
+
+[node name="Area1Sub2" type="Node2D" unique_id=1387768984]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=879262193]
+position = Vector2(2.595, 9)
+tile_map_data = PackedByteArray("AAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAARAAkAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAARAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAQAAkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_8u8ja")
+
+[node name="Home_stair_room_2" type="Sprite2D" parent="." unique_id=771486760]
+position = Vector2(240, 136)
+texture = ExtResource("2_8u8ja")
+
+[node name="plantpot_1" parent="." unique_id=1300183633 instance=ExtResource("4_ljhpr")]
+position = Vector2(282, 112)
+
+[node name="girl" parent="." unique_id=42267708 instance=ExtResource("1_wfnya")]
+position = Vector2(246, 132)
+
+[node name="Home_stair_room_1" type="Sprite2D" parent="." unique_id=1922748277]
+position = Vector2(240, 136)
+texture = ExtResource("4_nrgvk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1428870319]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=299843569]
+build_mode = 1
+polygon = PackedVector2Array(185, 177, 184, 88, 296, 88, 296, 177, 290, 177, 290, 121, 270, 121, 270, 119, 254, 119, 254, 121, 217, 121, 217, 177)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1467846572]
+position = Vector2(240.5, 180)
+shape = SubResource("RectangleShape2D_ftma3")

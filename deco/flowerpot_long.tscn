@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://37kfysiq62i"]
+
+[ext_resource type="Texture2D" uid="uid://cboo5rm03yba0" path="res://sprites/deco/flowertpot_long.png" id="1_kixaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b30ca"]
+size = Vector2(20, 13)
+
+[node name="flowerpot_long" type="Node2D" unique_id=673412855]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2132795303]
+texture = ExtResource("1_kixaw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2063435516]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1368768219]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_b30ca")

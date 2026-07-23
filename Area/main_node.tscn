@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dccurxm6mj6t1"]
+
+[ext_resource type="PackedScene" uid="uid://bu6x5qh8rru4u" path="res://Area/area_1.tscn" id="1_jo0yf"]
+[ext_resource type="PackedScene" uid="uid://uk7wqyagyxuj" path="res://Area/girl.tscn" id="2_n1bda"]
+
+[node name="MainNode" type="Node" unique_id=1203194697]
+
+[node name="Area1" parent="." unique_id=116826432 instance=ExtResource("1_jo0yf")]
+
+[node name="girl" parent="." unique_id=42267708 instance=ExtResource("2_n1bda")]
+position = Vector2(9, 14)
